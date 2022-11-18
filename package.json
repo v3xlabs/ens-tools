@@ -1,12 +1,12 @@
 {
     "name": "ens-tools",
-    "version": "0.0.1",
-    "description": "",
+    "description": "Opinionated ENS General Tooling",
     "main": "./lib/index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "lint": "eslint -c .eslintrc.json --ext .ts ./src",
-        "pub": "pnpm publish --no-git-checks"
+        "pub": "pnpm publish --no-git-checks",
+        "build": "tsup ./src/index.ts --format esm,cjs"
     },
     "keywords": [],
     "author": "V3X Labs",
@@ -15,6 +15,7 @@
         "@typescript-eslint/parser": "^5.42.1",
         "eslint": "^8.27.0",
         "eslint-plugin-v3xlabs": "^1.5.2",
+        "tsup": "^6.5.0",
         "typescript": "^4.8.4"
     }
 }
