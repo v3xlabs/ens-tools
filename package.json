@@ -1,7 +1,11 @@
 {
     "name": "ens-tools",
     "description": "Opinionated ENS General Tooling",
-    "main": "./lib/index.js",
+    "types": "./dist/index.d.ts",
+    "main": "./dist/index.js",
+    "files": [
+        "dist"
+    ],
     "type": "module",
     "scripts": {
         "test": "jest",
