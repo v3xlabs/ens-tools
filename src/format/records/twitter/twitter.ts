@@ -5,5 +5,5 @@ export const formatTwitterRules = formatter([
         record.replace(/^(https?:\/\/)?(www\.)?(mobile\.)?twitter\.com\//, ''),
     (record) => record.replace(/^@/, ''),
     (record) => record.replace(/\/$/, ''),
-    (record) => (/^[\dA-Za-z]{1,15}$/.test(record) ? `@${record}` : undefined),
+    (record) => (/^.{1,15}$/.test(record) ? `@${record}` : undefined),
 ]);
