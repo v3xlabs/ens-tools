@@ -11,7 +11,7 @@
         "test": "jest",
         "lint": "eslint -c .eslintrc.json --ext .ts ./src",
         "pub": "pnpm publish --no-git-checks",
-        "build": "tsup ./src/index.ts --format esm,cjs"
+        "build": "tsup ./src/index.ts --dts --format esm,cjs"
     },
     "keywords": [],
     "author": "V3X Labs",
