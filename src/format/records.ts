@@ -7,7 +7,16 @@ import { formatTwitterRules } from './records/twitter/twitter';
 import { formatWebsiteRules } from './records/website/website';
 import { Rule } from './rule';
 
-const socialFormatters: Record<string, Rule> = {
+type Types =
+    | 'com.twitter'
+    | 'com.reddit'
+    | 'com.github'
+    | 'com.discord'
+    | 'com.linkedin'
+    | 'com.telegram'
+    | 'website';
+
+const socialFormatters: Record<Types, Rule> = {
     'com.twitter': formatTwitterRules,
     'com.reddit': formatRedditRules,
     'com.github': formatGithubRules,
@@ -17,7 +26,7 @@ const socialFormatters: Record<string, Rule> = {
     website: formatWebsiteRules,
 };
 
-export const formatRecord = (record: string, value: string | undefined) => {
+export const formatRecord = (record: Types, value: string | undefined) => {
     if (!value) return;
 
     return socialFormatters[record]?.(value);
