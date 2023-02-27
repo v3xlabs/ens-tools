@@ -13,7 +13,7 @@ type Types =
     | 'com.github'
     | 'com.discord'
     | 'com.linkedin'
-    | 'com.telegram'
+    | 'org.telegram'
     | 'website';
 
 const socialFormatters: Record<Types, Rule> = {
@@ -22,7 +22,7 @@ const socialFormatters: Record<Types, Rule> = {
     'com.github': formatGithubRules,
     'com.discord': formatDiscordRules,
     'com.linkedin': formatLinkedinRules,
-    'com.telegram': formatTelegramRules,
+    'org.telegram': formatTelegramRules,
     website: formatWebsiteRules,
 };
 
