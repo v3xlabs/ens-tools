@@ -1,4 +1,4 @@
-[![ens-tools](.github/banner1.png)](https://www.npmjs.com/package/ens-tools)
+[![ens-tools](https://raw.githubusercontent.com/v3xlabs/ens-tools/master/.github/banner1.png)](https://www.npmjs.com/package/ens-tools)
 
 <br>
 
