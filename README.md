@@ -4,7 +4,7 @@
 
 > **Note**
 >
-> This project aims to extend the functionality of [wagmi](https://wagmi.sh/),
+> This project aims to extend the functionality of [wagmi](https://wagmi.sh/),<br />
 > in addition to providing utility to the ENS ecosystem.
 
 ## Features
