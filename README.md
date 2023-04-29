@@ -1,7 +1,5 @@
 [![ens-tools](https://raw.githubusercontent.com/v3xlabs/ens-tools/master/.github/banner1.png)](https://www.npmjs.com/package/ens-tools)
 
-<br>
-
 > **Note**
 >
 > This project aims to extend the functionality of [wagmi](https://wagmi.sh/),<br />
@@ -37,7 +35,7 @@ This library thingiemajig contains the following bits and bobs:
 -   [📝 formatAddress](#format-ethereum-addresses)
 -   [📝 formatRecords](#format-records)
 
-### React Hook for Multichain Addresses
+### ⚛️🪝 React Hook for Multichain Addresses
 
 The `coinType` variable supports all the coins following the [SLIP-0044](https://github.com/satoshilabs/slips/blob/master/slip-0044.md) specification.
 
@@ -54,7 +52,7 @@ export const BtcAddress = () => {
 };
 ```
 
-### React Hook for getting Records
+### ⚛️🪝 React Hook for getting Records
 
 This react hook lets you easily get records from an ENS name.
 Simply specify the records and wether you would like them normalized and you're good to go.
@@ -81,7 +79,7 @@ export const Records = () => {
 };
 ```
 
-### Format Ethereum Addresses
+### 📝 Format Ethereum Addresses
 
 Easily truncate Ethereum Addresses to 10 characters.
 
@@ -92,7 +90,7 @@ const address = formatAddress('0x1234567890123456789012345678901234567890');
 // Outputs: 0x1234...7890
 ```
 
-### Format Records
+### 📝 Format Records
 
 Easily normalize records.
 
@@ -116,6 +114,6 @@ const cleanTwitter = formatRecord(
 // Outputs: @lucemansnl
 ```
 
-## License
+## ⚖️ License
 
 [LGPL-3.0](/LICENSE) License
