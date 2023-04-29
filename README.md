@@ -31,7 +31,7 @@ npm install ens-tools
 
 ### React Hook for Multichain Addresses
 
-Something something multichain.
+The `coinType` variable supports all the coins following the [SLIP-0044](https://github.com/satoshilabs/slips/blob/master/slip-0044.md) specification.
 
 ```tsx
 import { useMultichainAddress } from 'ens-tools/react';
@@ -39,7 +39,7 @@ import { useMultichainAddress } from 'ens-tools/react';
 export const BtcAddress = () => {
     const { address } = useMultichainAddress({
         name: 'vitalik.eth',
-        coinType: 60,
+        coinType: 2,
     });
 
     return <div>BTC Address: {address}</div>;
