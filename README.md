@@ -21,13 +21,44 @@ For documentation. Stick to the Typescript Intellisense.
 
 ## Installation
 
-Install ens-tools and thats about it.
+Install ens-tools and let the magic happen.
 
 ```bash
 npm install ens-tools
 ```
 
 ## Usage
+
+### React Hook for getting Records
+
+```tsx
+import { useRecords } from 'ens-tools';
+
+export const Records = () => {
+    const { records } = useRecords('vitalik.eth');
+
+    return (
+        <div>
+            {records.map((record) => (
+                <div key={record.key}>
+                    {record.key}: {record.value}
+                </div>
+            ))}
+        </div>
+    );
+};
+```
+
+### Format Ethereum Addresses
+    
+```tsx
+import { formatAddress } from 'ens-tools';
+
+// outputs 0x1234...7890
+
+const address = formatAddress('0x1234567890123456789012345678901234567890');
+```
+
 
 ### React Hook for Multichain Addresses
 
@@ -44,6 +75,8 @@ export const BtcAddress = () => {
 
     return <div>BTC Address: {address}</div>;
 };
+
+```
 ```
 
 ## License
