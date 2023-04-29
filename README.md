@@ -30,16 +30,19 @@ npm install ens-tools
 ## Usage
 
 ### React Hook for getting Records
-
+    
 ```tsx
-import { useRecords } from 'ens-tools';
+import { useRecords } from 'ens-tools/react';
 
 export const Records = () => {
-    const { records } = useRecords('vitalik.eth');
+    const { data } = useRecords({
+        name: 'vitalik.eth',
+        records: ['com.twitter', 'com.github'],
+    });
 
     return (
         <div>
-            {records.map((record) => (
+            {data.map((record) => (
                 <div key={record.key}>
                     {record.key}: {record.value}
                 </div>
@@ -50,7 +53,7 @@ export const Records = () => {
 ```
 
 ### Format Ethereum Addresses
-    
+
 ```tsx
 import { formatAddress } from 'ens-tools';
 
