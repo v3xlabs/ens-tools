@@ -1,4 +1,4 @@
-import { formatRecord } from '../../src/index';
+import { formatRecord } from '../../../src/index';
 
 it('Twitter Default', () => {
     expect(formatRecord('com.twitter', 'lucemansnl')).toBe('@lucemansnl');

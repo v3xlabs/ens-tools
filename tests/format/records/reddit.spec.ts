@@ -1,4 +1,4 @@
-import { formatRecord } from '../../src/index';
+import { formatRecord } from '../../../src/index';
 
 it('Reddit Default', () => {
     expect(formatRecord('com.reddit', 'robi0t')).toBe('robi0t');

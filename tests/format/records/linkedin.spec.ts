@@ -1,4 +1,4 @@
-import { formatRecord } from '../../src/index';
+import { formatRecord } from '../../../src/index';
 
 it('Linkedin Default', () => {
     expect(formatRecord('com.linkedin', 'in/lucemans')).toBe('lucemans');

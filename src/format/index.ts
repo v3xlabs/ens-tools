@@ -1,3 +1,4 @@
+export * from './address';
 export { formatRecord } from './records';
 export { formatDiscordRules } from './records/discord/discord';
 export { formatLinkedinRules } from './records/linkedin/linkedin';

@@ -1,4 +1,4 @@
-import { formatRecord } from '../../src/index';
+import { formatRecord } from '../../../src/index';
 
 it('Github Default', () => {
     expect(formatRecord('com.github', 'lucemans')).toBe('lucemans');

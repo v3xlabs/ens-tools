@@ -1,4 +1,4 @@
-import { formatRecord } from '../../src/index';
+import { formatRecord } from '../../../src/index';
 
 it('Telegram Default', () => {
     expect(formatRecord('org.telegram', 'lucemansnl')).toBe('lucemansnl');

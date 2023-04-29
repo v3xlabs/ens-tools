@@ -1,4 +1,4 @@
-import { formatter } from '../../formatter';
+import { formatter } from '../formatter';
 
 export const formatTwitterRules = formatter([
     (record) =>

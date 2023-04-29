@@ -1,1 +1,1 @@
-export * from './format/records';
+export * from './format';

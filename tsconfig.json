@@ -12,6 +12,6 @@
         "outDir": "lib",
         "esModuleInterop": true
     },
-    "include": ["src", "tests/records/discord.spec.js"],
+    "include": ["src", "tests/format/records/discord.spec.js"],
     "exclude": ["node_modules", "tests", "lib"]
 }
