@@ -30,10 +30,10 @@ npm install ens-tools
 
 This library thingiemajig contains the following bits and bobs:
 
--   [⚛️🪝 useMultichainAddress](#react-hook-for-multichain-addresses)
--   [⚛️🪝 useRecords](#react-hook-for-getting-records)
--   [📝 formatAddress](#format-ethereum-addresses)
--   [📝 formatRecords](#format-records)
+-   [⚛️🪝 useMultichainAddress](##%EF%B8%8F-react-hook-for-multichain-addresses)
+-   [⚛️🪝 useRecords](##%EF%B8%8F-react-hook-for-getting-records)
+-   [📝 formatAddress](#-format-ethereum-addresses)
+-   [📝 formatRecords](#-format-records)
 
 ### ⚛️🪝 React Hook for Multichain Addresses
 
