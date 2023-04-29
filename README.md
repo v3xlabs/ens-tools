@@ -30,7 +30,7 @@ npm install ens-tools
 ## Usage
 
 ### React Hook for getting Records
-    
+
 ```tsx
 import { useRecords } from 'ens-tools/react';
 
@@ -62,7 +62,6 @@ import { formatAddress } from 'ens-tools';
 const address = formatAddress('0x1234567890123456789012345678901234567890');
 ```
 
-
 ### React Hook for Multichain Addresses
 
 The `coinType` variable supports all the coins following the [SLIP-0044](https://github.com/satoshilabs/slips/blob/master/slip-0044.md) specification.
@@ -78,10 +77,11 @@ export const BtcAddress = () => {
 
     return <div>BTC Address: {address}</div>;
 };
-
 ```
+
 ```
 
 ## License
 
 [LGPL-3.0](/LICENSE) License
+```
