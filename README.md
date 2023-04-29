@@ -8,10 +8,10 @@
 
 ## Features
 
-- 🪝 React Hook for Multichain Addresses
-- 💾 React Hook for getting Records
-- 💼 Easily Normalize Records
-- 📝 Easily truncate Ethereum Addresses
+-   🪝 React Hook for Multichain Addresses
+-   💾 React Hook for getting Records
+-   💼 Easily Normalize Records
+-   📝 Easily truncate Ethereum Addresses
 
 ...and a lot more.
 
@@ -25,6 +25,25 @@ Install ens-tools and thats about it.
 
 ```bash
 npm install ens-tools
+```
+
+## Usage
+
+### React Hook for Multichain Addresses
+
+Something something multichain.
+
+```tsx
+import { useMultichainAddress } from 'ens-tools/react';
+
+export const BtcAddress = () => {
+    const { address } = useMultichainAddress({
+        name: 'vitalik.eth',
+        coinType: 60,
+    });
+
+    return <div>BTC Address: {address}</div>;
+};
 ```
 
 ## License
