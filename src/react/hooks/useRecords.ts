@@ -1,76 +1,56 @@
-import { useChainId, useEnsResolver, useQuery } from 'wagmi';
+import { fetchEnsResolver } from '@wagmi/core';
+import { useEffect } from 'react';
+import useSWR from 'swr';
 
-type _wagmiEnsResolverArguments = typeof useEnsResolver extends (
-    arguments_: infer U
-) => any
-    ? U
-    : never;
-
-export type EnsRecordsConfig = {
-    // ENS name (eg. "luc.eth")
+export type EnsRecordsConfig<K extends string> = {
+    /** ENS name (eg. "luc.eth") */
     name: string;
-    // Records (eg. ["com.github", "avatar", "com.discord"])
-    records: string[];
-    // Wether to format/normalize the records
+    /** Records (eg. ["com.github", "avatar", "com.discord"]) */
+    records: K[];
+    /** Wether to format/normalize the records */
     format: boolean;
-} & _wagmiEnsResolverArguments;
-
-const queryKey = ({
-    chainId,
-    name,
-    scopeKey,
-}: Pick<EnsRecordsConfig, 'chainId' | 'name' | 'scopeKey'>) => {
-    return [
-        {
-            entity: 'ensRecords',
-            chainId,
-            name,
-            scopeKey,
-            persist: false,
-        },
-    ] as const;
 };
+
+type EnsRecordsResult<K extends string> = ReturnType<
+    typeof useSWR<Record<K, string> | null>
+>;
 
 /**
  * Gets the user's records for a given ENS.
  * CURRENTLY INCOMPLETE IMPLEMENTATION
  * Based on: https://github.com/wagmi-dev/wagmi/blob/main/packages/react/src/hooks/ens/useEnsResolver.ts
  */
-export const useRecords = ({
+export const useRecords = <K extends string>({
+    name,
     records,
-    ...resolverConfig
-}: EnsRecordsConfig): any => {
-    const {
-        name,
-        chainId: _chainId,
-        enabled,
-        scopeKey,
-        suspense,
-        onError,
-        onSettled,
-        onSuccess,
-        cacheTime,
-    } = resolverConfig;
+}: EnsRecordsConfig<K>): EnsRecordsResult<K> => {
+    const v = useSWR(`ens/r/${records.join(',')}`, async () => {
+        const resolver = await fetchEnsResolver({ name });
 
-    const chainId = useChainId({ chainId: _chainId });
-    const { data, ...resolverOutput } = useEnsResolver({
-        ...resolverConfig,
+        if (!resolver) return null;
+
+        const _object_ = await Promise.allSettled(
+            records.map(async (record) => {
+                const value = await resolver.getText(record);
+
+                return [record, value] as const;
+            })
+        );
+
+        return _object_.reduce((accumulator, current) => {
+            if (current.status === 'fulfilled') {
+                const [record, value] = current.value;
+
+                return { ...accumulator, [record]: value };
+            }
+
+            return accumulator;
+        }) as Record<K, any>;
     });
 
-    return useQuery(
-        queryKey({ chainId, name, scopeKey }),
-        async ({ queryKey: [{ chainId, name }] }) => {
-            return await Promise.all(
-                records.map(async (record) => data?.getText(record))
-            );
-        },
-        {
-            cacheTime: cacheTime || 3600,
-            enabled: Boolean(enabled && chainId && name),
-            suspense,
-            onError,
-            onSettled,
-            onSuccess,
-        }
-    );
+    useEffect(() => {
+        v.mutate();
+    }, [records.join(',')]);
+
+    return v;
 };
