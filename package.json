@@ -33,7 +33,8 @@
         "ts-node": "^10.9.1",
         "tsup": "^6.5.0",
         "typescript": "^4.8.4",
-        "wagmi": "^0.12.12"
+        "wagmi": "^0.12.12",
+        "swr": "^2.1.5"
     },
     "optionalDependency": {
         "@wagmi/core": "^0.10.10",
