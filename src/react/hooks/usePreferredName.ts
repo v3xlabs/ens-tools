@@ -28,6 +28,8 @@ export const usePreferredName = ({
         format: false,
     });
 
+    if (!data) return { data: name };
+
     if (data.display.toLowerCase() != name.toLowerCase()) return { data: name };
 
     return { data: data.display };
