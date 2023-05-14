@@ -37,15 +37,19 @@ export const useRecords = <K extends string>({
             })
         );
 
-        return _object_.reduce((accumulator, current) => {
-            if (current.status === 'fulfilled') {
-                const [record, value] = current.value;
+        const entries = _object_
+            .map((current) => {
+                if (current.status === 'fulfilled') {
+                    const [record, value] = current.value;
 
-                return { ...accumulator, [record]: value };
-            }
+                    return { [record]: value };
+                }
 
-            return accumulator;
-        }) as Record<K, any>;
+                return {};
+            })
+            .filter(Boolean);
+
+        return Object.fromEntries(entries as any[]) as Record<K, any>;
     });
 
     useEffect(() => {
