@@ -45,7 +45,7 @@ export const useRecords = <K extends string>({
                     return { [record]: value };
                 }
 
-                return {};
+                return false;
             })
             .filter(Boolean);
 
