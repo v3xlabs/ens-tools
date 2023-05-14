@@ -38,9 +38,7 @@
         "wagmi": "^0.12.12"
     },
     "peerDependencies": {
-        "swr": "^2.1.5"
-    },
-    "optionalDependency": {
+        "swr": "^2.1.5",
         "@wagmi/core": "^0.10.10",
         "wagmi": "^0.12.12",
         "ethers": "^5",
