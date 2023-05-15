@@ -17,37 +17,38 @@ type EnsRecordsResult<K extends string> = ReturnType<
 
 /**
  * Gets the user's records for a given ENS.
- * CURRENTLY INCOMPLETE IMPLEMENTATION
- * Based on: https://github.com/wagmi-dev/wagmi/blob/main/packages/react/src/hooks/ens/useEnsResolver.ts
  */
 export const useRecords = <K extends string>({
     name,
     records,
 }: EnsRecordsConfig<K>): EnsRecordsResult<K> => {
-    const v = useSWR(`ens/r/${records.join(',')}`, async () => {
-        const resolver = await fetchEnsResolver({ name });
+    const v = useSWR(
+        records?.length > 0 ? `ens/r/${records.join(',')}` : null,
+        async () => {
+            const resolver = await fetchEnsResolver({ name });
 
-        if (!resolver) return null;
+            if (!resolver) return null;
 
-        const _object_ = await Promise.allSettled(
-            records.map(async (record) => {
-                const value = await resolver.getText(record);
+            const _object_ = await Promise.allSettled(
+                records.map(async (record) => {
+                    const value = await resolver.getText(record);
 
-                return [record, value] as const;
-            })
-        );
-
-        return Object.fromEntries(
-            _object_
-                .map((result) => {
-                    if (result && result.status === 'fulfilled')
-                        return result.value;
-
-                    return null;
+                    return [record, value] as const;
                 })
-                .filter(Boolean) as Array<readonly [K, string]>
-        ) as Record<K, string>;
-    });
+            );
+
+            return Object.fromEntries(
+                _object_
+                    .map((result) => {
+                        if (result && result.status === 'fulfilled')
+                            return result.value;
+
+                        return null;
+                    })
+                    .filter(Boolean) as Array<readonly [K, string]>
+            ) as Record<K, string>;
+        }
+    );
 
     useEffect(() => {
         v.mutate();

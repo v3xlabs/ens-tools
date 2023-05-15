@@ -15,22 +15,21 @@ type EnsPreferredNameResult = {
 
 /**
  * Gets the user's preferred ENS capitalization respecting the `display` text record.
- * CURRENTLY INCOMPLETE IMPLEMENTATION
- * Based on: https://github.com/wagmi-dev/wagmi/blob/main/packages/react/src/hooks/ens/useEnsResolver.ts
  * For more info see [ENSIP-5](https://docs.ens.domains/ens-improvement-proposals/ensip-5-text-records)
  */
 export const usePreferredName = ({
     name,
 }: EnsPreferredNameConfig): EnsPreferredNameResult => {
-    const { data } = useRecords({
+    const v = useRecords({
         name,
         records: ['display'],
         format: false,
     });
 
-    if (!data) return { data: name };
+    if (!v.data) return { ...v, data: name };
 
-    if (data.display.toLowerCase() != name.toLowerCase()) return { data: name };
+    if (v.data.display?.toLowerCase() != name.toLowerCase())
+        return { ...v, data: name };
 
-    return { data: data.display };
+    return { ...v, data: v.data.display };
 };
