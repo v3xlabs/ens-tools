@@ -5,14 +5,15 @@
     "main": "./dist/index.js",
     "files": [
         "dist",
-        "dist/react"
+        "dist/react",
+        "react.js"
     ],
     "type": "module",
     "scripts": {
         "test": "jest",
         "lint": "eslint -c .eslintrc.json --ext .ts ./src",
         "pub": "pnpm publish --no-git-checks",
-        "build": "tsup ./src/index.ts ./src/react/index.ts --dts --format esm,cjs"
+        "build": "tsup"
     },
     "keywords": [],
     "author": "V3X Labs",
