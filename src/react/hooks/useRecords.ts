@@ -37,6 +37,8 @@ export const useRecords = <K extends string>({
             })
         );
 
+        console.log(_object_);
+
         const entries = _object_
             .map((current) => {
                 if (current.status === 'fulfilled') {
