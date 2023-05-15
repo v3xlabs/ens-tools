@@ -13,9 +13,9 @@
         "test": "jest",
         "lint": "eslint -c .eslintrc.json --ext .ts ./src",
         "pub": "pnpm publish --no-git-checks",
-        "build": "tsup && ln -s dist/react react"
+        "build": "tsup"
     },
-    "keywords": [],
+    "keywords": ["ens", "tools", "ccip", "evm"],
     "author": "V3X Labs",
     "license": "lgpl-3.0",
     "devDependencies": {
