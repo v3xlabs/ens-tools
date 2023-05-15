@@ -9,6 +9,7 @@
 
 -   🪝 React Hook for Multichain Addresses
 -   💾 React Hook for getting Records
+-   🔠 React Hook for preferred name Capitalization
 -   💼 Easily Normalize Records
 -   📝 Easily truncate Ethereum Addresses
 
@@ -32,6 +33,7 @@ This library thingiemajig contains the following bits and bobs:
 
 -   [⚛️🪝 useMultichainAddress](##%EF%B8%8F-react-hook-for-multichain-addresses)
 -   [⚛️🪝 useRecords](##%EF%B8%8F-react-hook-for-getting-records)
+-   [⚛️🪝 usePreferredName](##%EF%B8%8F-react-hook-for-name-capitalization)
 -   [📝 formatAddress](#-format-ethereum-addresses)
 -   [📝 formatRecords](#-format-records)
 
@@ -74,6 +76,30 @@ export const Records = () => {
                     {record.key}: {record.value}
                 </div>
             ))}
+        </div>
+    );
+};
+```
+
+### ⚛️🪝 React Hook for name Capitalization
+
+This react hook lets you easily get the preferred capitalization for an ENS name.
+It does this by reading the `display` record of the ENS name and defaults to the inputted validation.
+Optionally you can specify a fallback name to use in case the ENS name does not have a `display` record.
+Simply specify the name you're good to go.
+
+```tsx
+import { usePreferredName } from 'ens-tools/react';
+
+export const Name = () => {
+    const { data } = usePreferredName({
+        name: 'vitalik.eth',
+        fallback: 'vItAlIk.eth',
+    });
+
+    return (
+        <div>
+            Hey there <b>{data}</b>!
         </div>
     );
 };

@@ -3,6 +3,8 @@ import { useRecords } from './useRecords';
 type EnsPreferredNameConfig = {
     /** ENS name to look up */
     name: string;
+    /** Fallback to use incase no `display` record */
+    fallback?: string;
 };
 
 type EnsPreferredNameResult = {
@@ -19,6 +21,7 @@ type EnsPreferredNameResult = {
  */
 export const usePreferredName = ({
     name,
+    fallback = name,
 }: EnsPreferredNameConfig): EnsPreferredNameResult => {
     const v = useRecords({
         name,
@@ -26,10 +29,10 @@ export const usePreferredName = ({
         format: false,
     });
 
-    if (!v.data) return { ...v, data: name };
+    if (!v.data) return { ...v, data: fallback };
 
     if (v.data.display?.toLowerCase() != name.toLowerCase())
-        return { ...v, data: name };
+        return { ...v, data: fallback };
 
     return { ...v, data: v.data.display };
 };

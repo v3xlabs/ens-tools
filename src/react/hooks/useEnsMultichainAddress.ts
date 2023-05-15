@@ -1,32 +1,11 @@
-import { useChainId, useEnsResolver, useQuery } from 'wagmi';
-
-type _wagmiEnsResolverArguments = typeof useEnsResolver extends (
-    arguments_: infer U
-) => any
-    ? U
-    : never;
-
+/**
+ * Supports ENSIP-9 & ENSIP-11
+ */
 export type EnsMultichainAddressConfig = {
     // ENS name (eg. "luc.eth")
     name: string;
     // SLIP-0044 coin type (eg. 60 for Ethereum)
     coinType: number;
-} & _wagmiEnsResolverArguments;
-
-const queryKey = ({
-    chainId,
-    name,
-    scopeKey,
-}: Pick<EnsMultichainAddressConfig, 'chainId' | 'name' | 'scopeKey'>) => {
-    return [
-        {
-            entity: 'ensMultichainAddress',
-            chainId,
-            name,
-            scopeKey,
-            persist: false,
-        },
-    ] as const;
 };
 
 /**
@@ -38,35 +17,5 @@ export const useEnsMultichainAddress = ({
     coinType,
     ...resolverConfig
 }: EnsMultichainAddressConfig): any => {
-    const {
-        name,
-        chainId: _chainId,
-        enabled,
-        scopeKey,
-        suspense,
-        onError,
-        onSettled,
-        onSuccess,
-        cacheTime,
-    } = resolverConfig;
-
-    const chainId = useChainId({ chainId: _chainId });
-    const { data, ...resolverOutput } = useEnsResolver({
-        ...resolverConfig,
-    });
-
-    return useQuery(
-        queryKey({ chainId, name, scopeKey }),
-        async ({ queryKey: [{ chainId, name }] }) => {
-            return await data?.getAddress(coinType);
-        },
-        {
-            cacheTime: cacheTime || 36_000,
-            enabled: Boolean(enabled && chainId && name),
-            suspense,
-            onError,
-            onSettled,
-            onSuccess,
-        }
-    );
+    
 };
