@@ -6,14 +6,14 @@
     "files": [
         "dist",
         "dist/react",
-        "react.js"
+        "react"
     ],
     "type": "module",
     "scripts": {
         "test": "jest",
         "lint": "eslint -c .eslintrc.json --ext .ts ./src",
         "pub": "pnpm publish --no-git-checks",
-        "build": "tsup"
+        "build": "tsup && ln -s dist/react react"
     },
     "keywords": [],
     "author": "V3X Labs",
