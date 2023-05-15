@@ -37,21 +37,16 @@ export const useRecords = <K extends string>({
             })
         );
 
-        console.log(_object_);
+        return Object.fromEntries(
+            _object_
+                .map((result) => {
+                    if (result && result.status === 'fulfilled')
+                        return result.value;
 
-        const entries = _object_
-            .map((current) => {
-                if (current.status === 'fulfilled') {
-                    const [record, value] = current.value;
-
-                    return { [record]: value };
-                }
-
-                return false;
-            })
-            .filter(Boolean);
-
-        return Object.fromEntries(entries as any[]) as Record<K, any>;
+                    return null;
+                })
+                .filter(Boolean) as Array<readonly [K, string]>
+        ) as Record<K, string>;
     });
 
     useEffect(() => {
