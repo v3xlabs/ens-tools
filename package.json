@@ -6,7 +6,8 @@
     "files": [
         "dist",
         "dist/react",
-        "react"
+        "dist/format",
+        "dist/chains"
     ],
     "type": "module",
     "scripts": {
@@ -15,7 +16,12 @@
         "pub": "pnpm publish --no-git-checks",
         "build": "tsup"
     },
-    "keywords": ["ens", "tools", "ccip", "evm"],
+    "keywords": [
+        "ens",
+        "tools",
+        "ccip",
+        "evm"
+    ],
     "author": "V3X Labs",
     "license": "lgpl-3.0",
     "devDependencies": {
