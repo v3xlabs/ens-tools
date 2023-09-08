@@ -9,6 +9,44 @@
         "dist/format",
         "dist/chains"
     ],
+    "typesVersions": {
+        "*": {
+            ".": [
+                "./dist/index.d.ts"
+            ],
+            "./react": [
+                "./dist/react/index.d.ts"
+            ],
+            "./format": [
+                "./dist/format/index.d.ts"
+            ],
+            "./chains": [
+                "./dist/chains/index.d.ts"
+            ]
+        }
+    },
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs",
+            "types": "./dist/index.d.ts"
+        },
+        "./react": {
+            "import": "./dist/react/index.js",
+            "require": "./dist/react/index.cjs",
+            "types": "./dist/react/index.d.ts"
+        },
+        "./format": {
+            "import": "./dist/format/index.js",
+            "require": "./dist/format/index.cjs",
+            "types": "./dist/format/index.d.ts"
+        },
+        "./chains": {
+            "import": "./dist/chains/index.js",
+            "require": "./dist/chains/index.cjs",
+            "types": "./dist/chains/index.d.ts"
+        }
+    },
     "type": "module",
     "scripts": {
         "test": "jest",
