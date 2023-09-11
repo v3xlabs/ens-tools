@@ -3,9 +3,12 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
     entry: [
         'src/index.ts',
+        'src/dns/index.ts',
+        'src/types/index.ts',
         'src/react/index.ts',
         'src/format/index.ts',
         'src/chains/index.ts',
+        'src/enstate/index.ts',
     ],
     splitting: true,
     sourcemap: true,
