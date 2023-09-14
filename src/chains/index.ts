@@ -1,1 +1,1 @@
-export * from './evm2SIP44';
+export * from './evm2SIP44.js';

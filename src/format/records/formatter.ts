@@ -1,4 +1,4 @@
-import { Rule } from './rule';
+import type { Rule } from './rule.js';
 
 export const formatter = (rules: Rule[]): Rule => {
     return (value: string) => {

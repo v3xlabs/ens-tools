@@ -1,8 +1,8 @@
-export * from './address';
-export { formatRecord } from './records';
-export { formatDiscordRules } from './records/discord/discord';
-export { formatLinkedinRules } from './records/linkedin/linkedin';
-export { formatRedditRules } from './records/reddit/reddit';
-export { formatTelegramRules } from './records/telegram/telegram';
-export { formatTwitterRules } from './records/twitter/twitter';
-export { formatWebsiteRules } from './records/website/website';
+export * from './address/index.js';
+export { formatDiscordRules } from './records/discord/discord.js';
+export { formatRecord } from './records/index.js';
+export { formatLinkedinRules } from './records/linkedin/linkedin.js';
+export { formatRedditRules } from './records/reddit/reddit.js';
+export { formatTelegramRules } from './records/telegram/telegram.js';
+export { formatTwitterRules } from './records/twitter/twitter.js';
+export { formatWebsiteRules } from './records/website/website.js';

@@ -3,3 +3,4 @@ lib/
 coverage/
 dist/
 .env
+tsconfig*.tsbuildinfo

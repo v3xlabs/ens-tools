@@ -1,4 +1,4 @@
-import { formatter } from '../formatter';
+import { formatter } from '../formatter.js';
 
 export const formatGithubRules = formatter([
     (record) => record.replace(/^(https?:\/\/)?(www\.)?github\.com\//, ''),

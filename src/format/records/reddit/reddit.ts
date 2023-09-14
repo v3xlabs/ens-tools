@@ -1,4 +1,4 @@
-import { formatter } from '../formatter';
+import { formatter } from '../formatter.js';
 
 export const formatRedditRules = formatter([
     (record) => record.replace(/^(https?:\/\/)?(www\.)?reddit\.com\//, ''),

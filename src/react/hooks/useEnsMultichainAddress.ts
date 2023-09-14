@@ -15,6 +15,7 @@ export type EnsMultichainAddressConfig = {
  */
 export const useEnsMultichainAddress = ({
     coinType,
+    // @ts-ignore
     ...resolverConfig
 }: EnsMultichainAddressConfig): any => {
     

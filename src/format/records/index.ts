@@ -1,11 +1,11 @@
-import { formatDiscordRules } from './discord/discord';
-import { formatGithubRules } from './github/github';
-import { formatLinkedinRules } from './linkedin/linkedin';
-import { formatRedditRules } from './reddit/reddit';
-import { Rule } from './rule';
-import { formatTelegramRules } from './telegram/telegram';
-import { formatTwitterRules } from './twitter/twitter';
-import { formatWebsiteRules } from './website/website';
+import { formatDiscordRules } from './discord/discord.js';
+import { formatGithubRules } from './github/github.js';
+import { formatLinkedinRules } from './linkedin/linkedin.js';
+import { formatRedditRules } from './reddit/reddit.js';
+import type { Rule } from './rule.js';
+import { formatTelegramRules } from './telegram/telegram.js';
+import { formatTwitterRules } from './twitter/twitter.js';
+import { formatWebsiteRules } from './website/website.js';
 
 type Types =
     | 'com.twitter'

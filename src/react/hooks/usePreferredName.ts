@@ -1,4 +1,4 @@
-import { useRecords } from './useRecords';
+import { useRecords } from './useRecords.js';
 
 type EnsPreferredNameConfig = {
     /** ENS name to look up */

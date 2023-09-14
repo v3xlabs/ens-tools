@@ -1,17 +1,9 @@
 {
-    "compilerOptions": {
-        "moduleResolution": "node",
-        "target": "es2022",
-        "module": "es2022",
-        "lib": ["es2015", "es2016", "es2017", "es2020"],
-        "strict": true,
-        "declaration": true,
-        "allowSyntheticDefaultImports": true,
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "outDir": "lib",
-        "esModuleInterop": true
-    },
+    // This configuration is used for local development and type checking.
+    "extends": "./tsconfig.base.json",
     "include": ["src", "tests/format/records/discord.spec.js"],
-    "exclude": ["node_modules", "tests", "lib"]
-}
+    "exclude": ["node_modules", "tests", "lib"],
+    "compilerOptions": {
+      "resolveJsonModule": true
+    }
+  }
