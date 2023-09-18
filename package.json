@@ -14,13 +14,13 @@
             ".": [
                 "./dist/index.d.ts"
             ],
-            "./react": [
+            "react": [
                 "./dist/react/index.d.ts"
             ],
-            "./format": [
+            "format": [
                 "./dist/format/index.d.ts"
             ],
-            "./chains": [
+            "chains": [
                 "./dist/chains/index.d.ts"
             ]
         }
