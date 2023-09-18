@@ -1,0 +1,3 @@
+{
+    "extends": ["@ens-tools/base/tsconfig.base.json"],
+}

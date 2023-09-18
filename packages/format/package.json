@@ -1,0 +1,51 @@
+{
+  "name": "@ens-tools/format",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ext .ts,.tsx src",
+    "pub": "pnpm publish --no-git-checks",
+    "build": "tsup"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./records": {
+      "import": "./dist/records/index.js",
+      "require": "./dist/records/index.cjs",
+      "types": "./dist/records/index.d.ts"
+    },
+    "./address": {
+      "import": "./dist/address/index.js",
+      "require": "./dist/address/index.cjs",
+      "types": "./dist/address/index.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      ".": [
+          "./dist/index.d.ts"
+      ],
+      "records": [
+          "./dist/records/index.d.ts"
+      ],
+      "address": [
+          "./dist/address/index.d.ts"
+      ]
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@ens-tools/base": "workspace:*",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
+  }
+}
