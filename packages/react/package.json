@@ -18,8 +18,8 @@
     }
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "V3X Labs",
+  "license": "lgpl-3.0",
   "devDependencies": {
     "@ens-tools/base": "workspace:*",
     "@types/react": "^18.2.21",
