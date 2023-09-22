@@ -10,8 +10,6 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "outDir": "lib",
-        "esModuleInterop": true
-    },
-    "include": ["src", "tests/format/records/discord.spec.js"],
-    "exclude": ["node_modules", "tests", "lib"]
+        "esModuleInterop": true,
+    }
 }

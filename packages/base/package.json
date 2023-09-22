@@ -1,0 +1,32 @@
+{
+  "name": "@ens-tools/base",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "tsconfig.base.json",
+    "tsup.ts"
+  ],
+  "exports": {
+    "./tsup": {
+      "import": "./tsup.js",
+      "require": "./tsup.js",
+      "types": "./tsup.d.ts"
+    },
+    "./tsconfig.base.json": {
+      "import": "./tsconfig.base.json",
+      "require": "./tsconfig.base.json"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
+  }
+}
