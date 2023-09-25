@@ -13,6 +13,10 @@ type EnsPreferredNameResult = {
      * For more info see [ENSIP-5](https://docs.ens.domains/ens-improvement-proposals/ensip-5-text-records)
      */
     data: string;
+
+    error: Error | undefined;
+    isValidating: boolean;
+    isLoading: boolean;
 };
 
 /**

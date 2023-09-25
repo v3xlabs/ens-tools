@@ -1,5 +1,4 @@
-import { FetchEnsResolverArgs } from '@wagmi/core';
-import { vi } from 'vitest';
+import { fetchEnsResolver, FetchEnsResolverArgs } from '@wagmi/core';
 
 export const ensLocalResolver: Record<string, Record<string, string>> = {
     'helgesson.eth': {
@@ -20,32 +19,25 @@ export class MockError extends Error {
     }
 }
 
-export const wagmiCoreMock: (
-    importOriginal: <T = unknown>() => Promise<T>
-) => any = async (importOriginal) => {
-    const module_: object = await importOriginal();
+export const makeFetchEnsResolverMock =
+    (...overrides: Record<string, Record<string, string>>[]) =>
+    async ({ chainId, name }: FetchEnsResolverArgs) => {
+        const resolver = Object.assign(
+            {},
+            ensLocalResolver[name],
+            ...overrides.map((override) => override[name])
+        );
 
-    return {
-        ...module_,
-        fetchEnsResolver: vi
-            .fn()
-            .mockImplementation(({ chainId, name }: FetchEnsResolverArgs) => {
-                const resolver = ensLocalResolver[name];
+        if (!resolver)
+            throw new MockError(`${name} does not have a mock resolver`);
 
-                if (!resolver)
-                    throw new MockError(
-                        `${name} does not have a mock resolver`
-                    );
+        return {
+            async getText(record: string) {
+                const value = resolver[record];
 
-                return {
-                    async getText(record: string) {
-                        const value = resolver[record];
-
-                        return value
-                            ? Promise.resolve(value)
-                            : Promise.reject(new Error('Record not found'));
-                    },
-                };
-            }),
+                return value
+                    ? Promise.resolve(value)
+                    : Promise.reject(new Error('Record not found'));
+            },
+        } as Awaited<ReturnType<typeof fetchEnsResolver>>;
     };
-};

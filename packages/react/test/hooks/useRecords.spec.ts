@@ -1,14 +1,18 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 import { renderHook, waitFor } from '@testing-library/react';
+import { FetchEnsResolverArgs } from '@wagmi/core';
 import { describe, expect, it, vi } from 'vitest';
 
 import { useRecords } from '../../src/hooks/useRecords';
+import { makeFetchEnsResolverMock } from '../mocks';
 
 describe('useRecords', async () => {
-    vi.mock(
-        '@wagmi/core',
-        await import('../mocks').then((m) => m.wagmiCoreMock)
-    );
+    vi.mock('@wagmi/core', async (importOriginal: () => Promise<object>) => ({
+        ...(await importOriginal()),
+        fetchEnsResolver: vi.fn((arguments_: FetchEnsResolverArgs) =>
+            makeFetchEnsResolverMock()(arguments_)
+        ),
+    }));
 
     it('Fetch single record', async () => {
         const { result } = renderHook(() =>
