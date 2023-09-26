@@ -8,7 +8,8 @@
     "lint": "eslint --ext .ts,.tsx src",
     "pub": "pnpm publish --no-git-checks",
     "build": "tsup",
-    "test": "vitest run"
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
   },
   "exports": {
     ".": {

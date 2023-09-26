@@ -6,7 +6,11 @@
   "main": "index.js",
   "scripts": {
     "sync:deps": "syncpack",
-    "release": "pnpm -r build && changeset publish"
+    "release": "pnpm -r build && changeset publish",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck"
   },
   "keywords": [],
   "author": "",
