@@ -11,12 +11,19 @@ jobs:
 
         steps:
             - uses: actions/checkout@v3
+              if: ${{ github.event_name == 'pull_request' }}
+              with:
+                  fetch-depth: ${{ github.event.pull_request.commits }} + 1
+                  ref: ${{ github.event.pull_request.head.sha }}
+
+            - uses: actions/checkout@v3
+              if: ${{ github.event_name != 'pull_request' }}
 
             - name: Install dependencies
               uses: ./.github/actions/setup
 
             - name: Lint code
-              run: pnpm lint
+              run: pnpm --filter "...[HEAD~${{ github.event.pull_request.commits }}]" lint
 
     build:
         name: Build
@@ -26,12 +33,19 @@ jobs:
 
         steps:
             - uses: actions/checkout@v3
+              if: ${{ github.event_name == 'pull_request' }}
+              with:
+                  fetch-depth: ${{ github.event.pull_request.commits }} + 1
+                  ref: ${{ github.event.pull_request.head.sha }}
+
+            - uses: actions/checkout@v3
+              if: ${{ github.event_name != 'pull_request' }}
 
             - name: Install dependencies
               uses: ./.github/actions/setup
 
             - name: Build
-              run: pnpm build
+              run: pnpm --filter "...[HEAD~${{ github.event.pull_request.commits }}]" build
 
     types:
         name: Types
@@ -41,12 +55,19 @@ jobs:
 
         steps:
             - uses: actions/checkout@v3
+              if: ${{ github.event_name == 'pull_request' }}
+              with:
+                  fetch-depth: ${{ github.event.pull_request.commits }} + 1
+                  ref: ${{ github.event.pull_request.head.sha }}
+
+            - uses: actions/checkout@v3
+              if: ${{ github.event_name != 'pull_request' }}
 
             - name: Install dependencies
               uses: ./.github/actions/setup
 
             - name: Check types
-              run: pnpm typecheck
+              run: pnpm --filter "...[HEAD~${{ github.event.pull_request.commits }}]" typecheck
 
     test:
         name: Test
@@ -54,6 +75,13 @@ jobs:
 
         steps:
             - uses: actions/checkout@v3
+              if: ${{ github.event_name == 'pull_request' }}
+              with:
+                  fetch-depth: ${{ github.event.pull_request.commits }} + 1
+                  ref: ${{ github.event.pull_request.head.sha }}
+
+            - uses: actions/checkout@v3
+              if: ${{ github.event_name != 'pull_request' }}
 
             - name: Install dependencies
               uses: ./.github/actions/setup
@@ -63,4 +91,4 @@ jobs:
               with:
                   timeout_minutes: 20
                   max_attempts: 3
-                  command: pnpm test:coverage
+                  command: pnpm --filter "...[HEAD~${{ github.event.pull_request.commits }}]" test -- --coverage
