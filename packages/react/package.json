@@ -7,7 +7,8 @@
   "scripts": {
     "lint": "eslint --ext .ts,.tsx src",
     "pub": "pnpm publish --no-git-checks",
-    "build": "tsup"
+    "build": "tsup",
+    "test": "vitest run"
   },
   "exports": {
     ".": {
@@ -21,10 +22,14 @@
   "license": "lgpl-3.0",
   "devDependencies": {
     "@ens-tools/base": "workspace:*",
+    "@testing-library/react": "^14.0.0",
     "@types/react": "^18.2.21",
     "eslint": "^8.49.0",
+    "happy-dom": "^12.1.6",
+    "react-dom": "^18.2.0",
     "tsup": "^7.2.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.5"
   },
   "peerDependencies": {
     "@wagmi/core": "^0.10.10",
