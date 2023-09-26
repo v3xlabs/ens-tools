@@ -23,7 +23,7 @@ jobs:
               uses: ./.github/actions/setup
 
             - name: Lint code
-              run: pnpm --filter "...[HEAD~${{ github.event.pull_request.commits }}]" lint
+              run: pnpm --filter "...[HEAD~${{ github.event.pull_request.commits || 1 }}]" lint
 
     build:
         name: Build
@@ -45,7 +45,7 @@ jobs:
               uses: ./.github/actions/setup
 
             - name: Build
-              run: pnpm --filter "...[HEAD~${{ github.event.pull_request.commits }}]" build
+              run: pnpm --filter "...[HEAD~${{ github.event.pull_request.commits || 1 }}]" build
 
     types:
         name: Types
@@ -67,7 +67,7 @@ jobs:
               uses: ./.github/actions/setup
 
             - name: Check types
-              run: pnpm --filter "...[HEAD~${{ github.event.pull_request.commits }}]" typecheck
+              run: pnpm --filter "...[HEAD~${{ github.event.pull_request.commits || 1 }}]" typecheck
 
     test:
         name: Test
@@ -91,4 +91,4 @@ jobs:
               with:
                   timeout_minutes: 20
                   max_attempts: 3
-                  command: pnpm --filter "...[HEAD~${{ github.event.pull_request.commits }}]" test -- --coverage
+                  command: pnpm --filter "...[HEAD~${{ github.event.pull_request.commits || 1 }}]" test -- --coverage
