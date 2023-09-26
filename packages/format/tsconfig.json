@@ -1,3 +1,5 @@
 {
-    "extends": ["@ens-tools/base/tsconfig.base.json"],
+    "extends": [
+        "@ens-tools/base/tsconfig.base.json"
+    ],
 }
