@@ -11,9 +11,13 @@ jobs:
 
         steps:
             - uses: actions/checkout@v3
+              if: github.event.pull_request
               with:
-                fetch-depth: ${{ github.event.pull_request.commits }} + 1
-                ref: ${{ github.event.pull_request.head.sha }}
+                  fetch-depth: ${{ github.event.pull_request.commits }} + 1
+                  ref: ${{ github.event.pull_request.head.sha }}
+
+            - uses: actions/checkout@v3
+              if: !github.event.pull_request
 
             - name: Install dependencies
               uses: ./.github/actions/setup
@@ -29,9 +33,13 @@ jobs:
 
         steps:
             - uses: actions/checkout@v3
+              if: github.event.pull_request
               with:
-                fetch-depth: ${{ github.event.pull_request.commits }} + 1
-                ref: ${{ github.event.pull_request.head.sha }}
+                  fetch-depth: ${{ github.event.pull_request.commits }} + 1
+                  ref: ${{ github.event.pull_request.head.sha }}
+
+            - uses: actions/checkout@v3
+              if: !github.event.pull_request
 
             - name: Install dependencies
               uses: ./.github/actions/setup
@@ -47,9 +55,13 @@ jobs:
 
         steps:
             - uses: actions/checkout@v3
+              if: github.event.pull_request
               with:
-                fetch-depth: ${{ github.event.pull_request.commits }} + 1
-                ref: ${{ github.event.pull_request.head.sha }}
+                  fetch-depth: ${{ github.event.pull_request.commits }} + 1
+                  ref: ${{ github.event.pull_request.head.sha }}
+
+            - uses: actions/checkout@v3
+              if: !github.event.pull_request
 
             - name: Install dependencies
               uses: ./.github/actions/setup
@@ -63,9 +75,13 @@ jobs:
 
         steps:
             - uses: actions/checkout@v3
+              if: github.event.pull_request
               with:
-                fetch-depth: ${{ github.event.pull_request.commits }} + 1
-                ref: ${{ github.event.pull_request.head.sha }}
+                  fetch-depth: ${{ github.event.pull_request.commits }} + 1
+                  ref: ${{ github.event.pull_request.head.sha }}
+
+            - uses: actions/checkout@v3
+              if: !github.event.pull_request
 
             - name: Install dependencies
               uses: ./.github/actions/setup
