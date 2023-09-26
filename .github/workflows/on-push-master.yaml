@@ -10,7 +10,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 jobs:
     verify:
         name: Verify
-        uses: ./.github/workflows/verify.yml
+        uses: ./.github/workflows/verify.yaml
         secrets: inherit
     changesets:
         name: Changesets
