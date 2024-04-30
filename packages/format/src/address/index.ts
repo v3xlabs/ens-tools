@@ -6,6 +6,8 @@ export const AddressRegex = /^0x[\dA-Fa-f]{40}$/;
  * @param address The address to format
  */
 export const formatAddress = (address: string) => {
+    if (!address) return address;
+
     if (address.match(AddressRegex) === null) return address;
 
     return `${address.slice(0, 5)}...${address.slice(-4)}`;
